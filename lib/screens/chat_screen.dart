@@ -10,22 +10,24 @@ class ChatScreen extends StatelessWidget {
             .collection('chats/LKW6Aw1kDA2aEGn76BF8/messages')
             .snapshots(),
         builder: (ctx, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
           return ListView.builder(
             itemBuilder: (ctx, index) => Container(
               padding: EdgeInsets.all(8.0),
               child: Text('This works'),
             ),
-            itemCount: 2,
+            itemCount: snapshot.data.documents.length,
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {
-          Firestore.instance.collection('chats').snapshots().listen((data) {
-            print(data.documents);
-          });
-        },
+        onPressed: () {},
       ),
     );
   }
