@@ -16,18 +16,26 @@ class ChatScreen extends StatelessWidget {
             );
           }
 
+          final documents = snapshot.data.documents;
+
           return ListView.builder(
             itemBuilder: (ctx, index) => Container(
               padding: EdgeInsets.all(8.0),
-              child: Text('This works'),
+              child: Text(documents[index]['text']),
             ),
-            itemCount: snapshot.data.documents.length,
+            itemCount: documents.length,
           );
         },
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Firestore.instance
+              .collection('chats/LKW6Aw1kDA2aEGn76BF8/messages')
+              .add({
+            'text': 'test1',
+          });
+        },
       ),
     );
   }
