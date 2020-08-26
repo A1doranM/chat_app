@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:chat_app/widgets/pickers/user_image_picker.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
   final bool isLoading;
   final void Function(BuildContext ctx,
-      {String email, String name, String password, bool isLogin}) onSubmit;
+      {String email,
+      String name,
+      String password,
+      File userImage,
+      bool isLogin}) onSubmit;
 
   const AuthForm({Key key, this.onSubmit, this.isLoading}) : super(key: key);
 
@@ -18,6 +24,7 @@ class _AuthFormState extends State<AuthForm> {
   String _userEmail = '';
   String _userName = '';
   String _userPassword = '';
+  File _userImageFile = File('assets/default_avatar.png');
 
   void _trySubmit() {
     final isValid = _formKey.currentState.validate();
@@ -29,8 +36,13 @@ class _AuthFormState extends State<AuthForm> {
           email: _userEmail.trim(),
           name: _userName.trim(),
           password: _userPassword,
+          userImage: _userImageFile,
           isLogin: _isLogin);
     }
+  }
+
+  void _pickedImage(File image) {
+    _userImageFile = image;
   }
 
   @override
@@ -45,7 +57,9 @@ class _AuthFormState extends State<AuthForm> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                UserImagePicker(),
+                UserImagePicker(
+                  imagePickFn: _pickedImage,
+                ),
                 TextFormField(
                   key: ValueKey('email'),
                   validator: (value) {
