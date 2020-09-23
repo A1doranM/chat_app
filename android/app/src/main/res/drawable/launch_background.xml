@@ -3,22 +3,12 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
        <item android:drawable="@android:color/white" />
 
-    <!-- You can insert your own image assets here -->
     <item
-        android:top="80dp"
-        >
-        <bitmap
-            android:gravity="top|fill_horizontal"
-            android:src="@drawable/colors_line" />
-    </item>
-    <item
-        android:height="44dp"
-        android:width="238dp"
         android:gravity="center"
         >
         <bitmap
             android:gravity="fill"
-            android:src="@drawable/fire" />
+            android:src="@drawable/splash" />
     </item>
 
 
