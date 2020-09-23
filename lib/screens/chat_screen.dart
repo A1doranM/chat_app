@@ -32,7 +32,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('FlutterChat'),
+        title: const Text('FlutterChat'),
         actions: <Widget>[
           DropdownButton(
             underline: SizedBox.shrink(),
@@ -49,7 +49,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       SizedBox(
                         width: 8,
                       ),
-                      Text('Logout')
+                      const Text('Logout')
                     ],
                   ),
                 ),

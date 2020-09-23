@@ -43,7 +43,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
         FlatButton.icon(
           onPressed: pickImage,
           icon: Icon(Icons.camera),
-          label: Text('Add image'),
+          label: const Text('Add image'),
           textColor: Theme.of(context).primaryColor,
         ),
       ],

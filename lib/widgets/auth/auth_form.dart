@@ -51,7 +51,7 @@ class _AuthFormState extends State<AuthForm> {
         child: Card(
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Form(
             key: _formKey,
             child: Column(
@@ -131,7 +131,7 @@ class _AuthFormState extends State<AuthForm> {
           ),
         ),
       ),
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
     ));
   }
 }
